@@ -9,10 +9,12 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('register/', views.register, name='register'),
     path('', views.login, name='login'),
+    # path('/logout/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
     path('index/', views.index, name='index'),
     path('data/',views.show,name='author_seller'),
     path('upload/', views.create_profile,name="upload"),
+    path('verify_otp/', views.verify_otp,name="verify"),
     
     path('display_file',views.uploaded_file,name="display_file"),
     path('display_file_specific',views.uploaded_file_specific_user,name="display_file_specific"),

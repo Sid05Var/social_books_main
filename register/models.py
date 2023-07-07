@@ -30,3 +30,10 @@ class uploaded_files(models.Model):
    
     def __str__(self):
         return self.Name
+    
+
+# class ver_otp(models.Model):
+#     enter_otp = models.CharField(max_length=200)
+    
+    # def __str__(self):
+    #     return self.enter_otp

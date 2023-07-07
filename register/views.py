@@ -11,26 +11,54 @@ from django.contrib.auth import authenticate
 from rest_framework.views import APIView
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
+from social_books import settings
+# from .models import ver_otp
+# from .forms import V_otpform
+from django.core.mail import send_mail
+import math, random
 # from djoser.views import UserViewSet
 
 
 def login(request):
+    
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
-        print(email)
-        print(password)
+        otp=generateOTP()
+        request.session["otp"] = otp
+        request.session["email"]=email
+        request.session["password"]=password
         if email and password:
             user = authenticate(request, email=email, password=password)
             print(user)
             if user is not None:
-                auth_login(request, user)
-                return redirect('index')
+                from_email = settings.EMAIL_HOST_USER
+                send_mail("otp", otp, from_email, [email])
+                print("otp", otp, from_email, [email])
+                return redirect('verify')
         else:
             return HttpResponse('Invalid email or password')
     
     return render(request, 'login.html')
 
+def verify_otp(request):
+    otp = request.session.get("otp")
+    email=request.session.get("email")
+    password=request.session.get("password")
+    # form1=V_otpform()
+    if request.method == 'POST':
+        ent_otp = request.POST.get("enterotp")
+        print(ent_otp)
+        if str(ent_otp) == str(otp):
+            user = authenticate(username = email, password = password)
+            auth_login(request,user)
+            return redirect('index')
+        
+        else:
+            return HttpResponse('otp is invalid')
+    return render(request, 'verify.html')
+            
+    
 
 @login_required(login_url='login')
 def logout(request):
@@ -40,8 +68,18 @@ def logout(request):
 def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
+        fullname=request.POST.get('fullname')
+        email=request.POST.get('email')
+        
         if form.is_valid():
             form.save()
+            subject = 'Social Book Registration'
+            message = f'Hello {fullname}, You have been registered with us successfully. Please verify your email by clicking on this link: '
+            from_email = settings.EMAIL_HOST_USER
+            to_email = email
+            print(to_email)
+            send_mail(subject, message, from_email, [to_email])
+            print(subject, message, from_email, [to_email])
             return redirect('login')
     else:
         form = CustomUserCreationForm()
@@ -125,3 +163,19 @@ def get_uploaded_file(request, file_id):
         return Response({'file_url': file.display_picture.url})
     except uploaded_files.DoesNotExist:
         return Response({'error': 'File not found'}, status=404)
+    
+    
+    
+def generateOTP() :
+     
+    # Declare a digits variable 
+    # which stores all digits
+    digits = "0123456789"
+    OTP = ""
+ 
+   # length of password can be changed
+   # by changing value in range
+    for i in range(6) :
+        OTP += digits[math.floor(random.random() * 10)]
+ 
+    return OTP
