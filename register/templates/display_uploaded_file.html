@@ -1,0 +1,105 @@
+{% extends 'index.html' %}
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+    {% comment %} <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .file-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .file-table th,
+        .file-table td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        .file-table th {
+            background-color: #f2f2f2;
+            color: #333;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .file-table td img {
+            max-width: 100px;
+            height: auto;
+        }
+
+        .no-files-row td {
+            text-align: center;
+            color: #888;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            .file-table th,
+            .file-table td {
+                padding: 8px;
+            }
+            .file-table td img {
+                max-width: 80px;
+            }
+        }
+    </style> {% endcomment %}
+
+
+    {% block content %}
+    <div class="container">
+        <h1>Uploaded Files</h1>
+
+        <table class="file-table">
+            <tr>
+                <th>Name</th>
+                <th>Title</th>
+                <th>Visibility</th>
+                <th>Cost</th>
+                <th>Year of Publication</th>
+                <th>File</th>
+            </tr>
+            {% for file in files %}
+                <tr>
+                    <td>{{ file.Name }}</td>
+                    <td>{{file.Title}}</td>
+
+                    <td>{{ file.visibility }}</td>
+                    <td>{{ file.cost }}</td>
+                    <td>{{ file.year_of_pblish }}</td>
+                    {% comment %} <td>{{ file.display_picture}}</td> {% endcomment %}
+                    <td>
+                        {% if file.display_picture.url %}
+                            <a href="{{ file.display_picture.url }}">Download</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr class="no-files-row">
+                    <td colspan="6">No files uploaded yet.</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endblock %}
