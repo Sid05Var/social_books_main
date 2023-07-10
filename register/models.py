@@ -2,6 +2,8 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from .managers import CustomUserManager
+
+from django.core.validators import FileExtensionValidator
 class CustomUser(AbstractUser):
     GENDER_CHOICES = (
         ('M', 'Male'),
@@ -26,7 +28,9 @@ class uploaded_files(models.Model):
     visibility = models.BooleanField(default=True)
     cost = models.IntegerField()
     year_of_pblish = models.DateField(null=True, blank=True)
-    display_picture = models.FileField()
+    display_picture = models.FileField(null=True, blank=True, validators=[FileExtensionValidator( ['pdf','png', 'jpg', 'jpeg'] )])
+    book_image=models.FileField(null=True, blank=True, validators=[FileExtensionValidator( ['png', 'jpg', 'jpeg'] )])
+    # imagefield
    
     def __str__(self):
         return self.Name

@@ -392,6 +392,12 @@
 			</div>
 		</div>
 		<div class="header-right">
+		<div class="dashboard-setting user-notification">
+				<div class="dropdown">
+
+				<a class="dropdown-toggle no-arrow" href="{% url 'upload' %}"><i class="dw dw-upload2"></i></a>
+				</div>
+			</div>
 			<div class="dashboard-setting user-notification">
 				<div class="dropdown">
 					<a class="dropdown-toggle no-arrow" href="javascript:;" data-toggle="right-sidebar">
@@ -802,6 +808,12 @@
                 <label for="Visibility">Visibility: *</label>
                {{form.visibility}}
                 <span >{{form.visibility.errors}}</span>
+
+            </div>
+			<div class="form-group">
+                <label for="book_image">book_cover_image: *</label>
+               {{form.book_image}}
+                <span >{{form.book_image.errors}}</span>
 
             </div>
             <div class="form-group">

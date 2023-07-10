@@ -92,6 +92,13 @@
 		<div class="header-right">
 			<div class="dashboard-setting user-notification">
 				<div class="dropdown">
+
+				<a class="dropdown-toggle no-arrow" href="{% url 'upload' %}"><i class="dw dw-upload2"></i></a>
+				</div>
+			</div>
+			
+			<div class="dashboard-setting user-notification">
+				<div class="dropdown">
 					<a class="dropdown-toggle no-arrow" href="javascript:;" data-toggle="right-sidebar">
 						<i class="dw dw-settings2"></i>
 					</a>
@@ -168,6 +175,7 @@
 					</div>
 				</div>
 			</div>
+			
 			<div class="github-link">
 				<a href="https://github.com/dropways/deskapp" target="_blank"><img src="{%static 'images/github.svg' %}" alt=""></a>
 			</div>
@@ -310,7 +318,7 @@
 					</li>
 					<li class="dropdown">
 						<a href="{% url 'display_file_specific' %}" class="dropdown-toggle no arrow">
-							<span class="micon dw dw-apartment"></span><span class="mtext"> Display Specific User  </span>
+							<span class="micon dw dw-apartment"></span><span class="mtext"> My Books  </span>
 						</a>
 						{% comment %} <ul class="submenu">
 							<li><a href="ui-buttons.html">Buttons</a></li>

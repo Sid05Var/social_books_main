@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'upload_book_app',
     	'rest_framework.authtoken',
     'rest_framework',
+    # 'widget_tweaks',
 ]
 
 MIDDLEWARE = [

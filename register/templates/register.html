@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% comment %} {% load widget_tweaks %} {% endcomment %}
 <html>
 
 <head>
@@ -67,7 +68,9 @@
 										<div class="form-group row">
 											<label class="col-sm-4 col-form-label">Email Address*</label>
 											<div class="col-sm-8">
-												{{form.email}}
+												  {% comment %} {{ form.email.label_tag }} {% endcomment %}
+  												  {{ form.email}}
+												{% comment %} {{form.email | addclass:'form-control'}} {% endcomment %}
 												<span >{{form.email.errors}}</span>
 											</div>
 										</div>
@@ -81,7 +84,9 @@
 										<div class="form-group row">
 											<label class="col-sm-4 col-form-label">Password*</label>
 											<div class="col-sm-8">
+												
 												{{form.password1}}
+												
 												<span >{{form.password1.errors}}</span>
 											</div>
 										</div>

@@ -108,8 +108,8 @@ def create_profile(request):
             user_pr.display_picture = request.FILES['display_picture']
             file_type = user_pr.display_picture.url.split('.')[-1]
             file_type = file_type.lower()
-            if file_type not in IMAGE_FILE_TYPES:
-                return render(request, 'profile_maker/error.html')
+            # if file_type not in IMAGE_FILE_TYPES:
+            #     return render(request, 'profile_maker/create.html')
             user_pr.save()
             return render(request, 'index.html', {'user_pr': user_pr})
     
@@ -154,17 +154,50 @@ class TokenGenerationView(APIView):
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+# def get_uploaded_file(request, file_id):
+#     try:
+#         username=request.user.username
+#         # file = uploaded_files.objects.get(Title=file_id)
+#         file=uploaded_files.objects.all()
+#         file=file.filter(Name=username)
+#         # Perform any additional logic here if needed
+#         return Response({'file_url': file.display_picture.url,'file_Title':file.Name,'file_Cost':file.Cost,'file_year_of_publish':file.year_of_pblish,'file_visibility':file.visibility})
+#     except uploaded_files.DoesNotExist:
+#         return Response({'error': 'File not found'}, status=404)
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_uploaded_file(request, file_id):
+def get_uploaded_file(request):
     try:
-        file = uploaded_files.objects.get(Title=file_id)
+        username=request.user.username
+        dict={}
+        dict1={}
+        # file = uploaded_files.objects.get(Title=file_id)
+        file=uploaded_files.objects.all()
+        print(username)
+        file=file.filter(Name=username)
+        print(file)
+        for i in file:
+            
+            dict1[i.Title]={'file_url': i.display_picture.url,'file_Title':i.Title,'file_Cost':i.cost,'file_year_of_publish':i.year_of_pblish,'file_visibility':i.visibility}
+            print(dict1)
+            a={'file_url': i.display_picture.url,'file_Title':i.Name,'file_Cost':i.cost,'file_year_of_publish':i.year_of_pblish,'file_visibility':i.visibility}
         # Perform any additional logic here if needed
-        return Response({'file_url': file.display_picture.url})
+        # dict1=tuple(dict1)
+        print(dict1)
+        return Response({'file_details':dict1})
     except uploaded_files.DoesNotExist:
         return Response({'error': 'File not found'}, status=404)
-    
-    
+
+    # .display_picture.url,'file_Title':file.Name,'file_Cost':file.Cost,'file_year_of_publish':file.year_of_pblish,'file_visibility':file.visibility
+# 'Name',
+#             'Title',
+#             'visibility',
+#             'cost',
+#             'year_of_pblish',
+#             'display_picture',
     
 def generateOTP() :
      
