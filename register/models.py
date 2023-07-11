@@ -1,8 +1,9 @@
+from datetime import date
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from .managers import CustomUserManager
-
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.core.validators import FileExtensionValidator
 class CustomUser(AbstractUser):
     GENDER_CHOICES = (
@@ -13,6 +14,22 @@ class CustomUser(AbstractUser):
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     fullname = models.CharField(max_length=255)
     email = models.EmailField(_("email address"), unique=True)
+    dob = models.IntegerField(
+        validators=[
+            MaxValueValidator(2023, message='Number should be maximum 4 digits.'),
+            MinValueValidator(1900, message='Number should be minimum 0.')
+        ]
+    )
+    age = models.IntegerField(
+        validators=[
+            MaxValueValidator(0, message='Number should be maximum 4 digits.'),
+            MinValueValidator(100, message='Number should be minimum 0.')
+        ]
+    )
+    
+    visibility = models.BooleanField()
+    today = date.today().year
+  
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
     objects = CustomUserManager()

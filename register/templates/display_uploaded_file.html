@@ -91,6 +91,8 @@
                 <p>Visibility: {{ file.visibility }}</p> 
                 <p>Cost: {{ file.cost }}</p>
                 <p>Year of Publish: {{ file.year_of_pblish }}</p>
+                <br>
+                <br>
                 {% if file.display_picture.url %}
                 <a class="download-btn" href="{{ file.display_picture.url }}" download>Download</a>
                 {% endif %}

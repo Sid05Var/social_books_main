@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+ {% extends 'index.html' %}
+{% load static %}
+
 <html>
 <head>
 	<!-- Basic Page Info -->
@@ -6,9 +8,9 @@
 	<title>DeskApp - Bootstrap Admin Dashboard HTML Template</title>
 
 	<!-- Site favicon -->
-	<link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="vendors/images/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="vendors/images/favicon-16x16.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="{%static 'images/apple-touch-icon.png' %}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{%static 'images/favicon-32x32.png' %}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{%static 'images/favicon-16x16.png' %}">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -16,9 +18,9 @@
 	<!-- Google Font -->
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
-	<link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
-	<link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
+	<link rel="stylesheet" type="text/css" href="{%static 'styles/core.css' %}">
+	<link rel="stylesheet" type="text/css" href="{%static 'styles/icon-font.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{%static 'styles/style.css' %}">
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
@@ -33,7 +35,7 @@
 <body>
 	<!-- <div class="pre-loader">
 		<div class="pre-loader-box">
-			<div class="loader-logo"><img src="vendors/images/deskapp-logo.svg" alt=""></div>
+			<div class="loader-logo"><img src="{%static 'images/deskapp-logo.svg' %}" alt=""></div>
 			<div class='loader-progress' id="progress_div">
 				<div class='bar' id='bar1'></div>
 			</div>
@@ -104,42 +106,42 @@
 							<ul>
 								<li>
 									<a href="#">
-										<img src="vendors/images/img.jpg" alt="">
+										<img src="{%static 'images/img.jpg' %}" alt="">
 										<h3>John Doe</h3>
 										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="vendors/images/photo1.jpg" alt="">
+										<img src="{%static 'images/photo1.jpg' %}" alt="">
 										<h3>Lea R. Frith</h3>
 										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="vendors/images/photo2.jpg" alt="">
+										<img src="{%static 'images/photo2.jpg' %}" alt="">
 										<h3>Erik L. Richards</h3>
 										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="vendors/images/photo3.jpg" alt="">
+										<img src="{%static 'images/photo3.jpg' %}" alt="">
 										<h3>John Doe</h3>
 										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="vendors/images/photo4.jpg" alt="">
+										<img src="{%static 'images/photo4.jpg' %}" alt="">
 										<h3>Renee I. Hansen</h3>
 										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="vendors/images/img.jpg" alt="">
+										<img src="{%static 'images/img.jpg' %}" alt="">
 										<h3>Vicki M. Coleman</h3>
 										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
 									</a>
@@ -153,7 +155,7 @@
 				<div class="dropdown">
 					<a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 						<span class="user-icon">
-							<img src="vendors/images/photo1.jpg" alt="">
+							<img src="{%static 'images/photo1.jpg' %}" alt="">
 						</span>
 						<span class="user-name">Ross C. Lopez</span>
 					</a>
@@ -166,7 +168,7 @@
 				</div>
 			</div>
 			<div class="github-link">
-				<a href="https://github.com/dropways/deskapp" target="_blank"><img src="vendors/images/github.svg" alt=""></a>
+				<a href="https://github.com/dropways/deskapp" target="_blank"><img src="{%static 'images/github.svg' %}" alt=""></a>
 			</div>
 		</div>
 	</div>
@@ -249,8 +251,8 @@
 	<div class="left-side-bar">
 		<div class="brand-logo">
 			<a href="index.html">
-				<img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
-				<img src="vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
+				<img src="{%static 'images/deskapp-logo.svg" alt="" class="dark-logo">
+				<img src="{%static 'images/deskapp-logo-white.svg" alt="" class="light-logo">
 			</a>
 			<div class="close-sidebar" data-toggle="left-sidebar-close">
 				<i class="ion-close-round"></i>
@@ -438,16 +440,29 @@
 					<li>
 						<a href="https://dropways.github.io/deskapp-free-single-page-website-template/" target="_blank" class="dropdown-toggle no-arrow">
 							<span class="micon dw dw-paper-plane1"></span>
-							<span class="mtext">Landing Page <img src="vendors/images/coming-soon.png" alt="" width="25"></span>
+							<span class="mtext">Landing Page <img src="{%static 'images/coming-soon.png" alt="" width="25"></span>
 						</a>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</div>
+	
 	<div class="mobile-menu-overlay"></div>
 
 	<div class="main-container">
+
+		{% block content %}
+		 <style>
+			 {% comment %} .imagine{
+				height:px;
+				width:366x;
+			}  {% endcomment %}
+			.producct-img{
+				height: 200px;
+				max-width: 366x;
+			}
+		</style>
 		<div class="pd-ltr-20 xs-pd-20-10">
 			<div class="min-height-200px">
 				<div class="page-header">
@@ -466,157 +481,183 @@
 					</div>
 				</div>
 				<div class="product-wrap">
+
 					<div class="product-list">
 						<ul class="row">
+							{% for file in files %}
 							<li class="col-lg-4 col-md-6 col-sm-12">
+								
 								<div class="product-box">
-									<div class="producct-img"><img src="vendors/images/product-img1.jpg" alt=""></div>
+									{% if file.book_image %}
+									<div class="producct-img "><img class="imagine" height="309px" width="366px"src="{{ file.book_image.url }}"  alt=""></div>
+									{% endif %}
 									<div class="product-caption">
-										<h4><a href="#">Gufram Bounce Black</a></h4>
+										<h4>{{ file.Title }}</h4>
 										<div class="price">
-											<del>$55.5</del><ins>$49.5</ins>
+											<del>Rs700</del><ins>RS{{ file.cost }}</ins>
 										</div>
-										<a href="#" class="btn btn-outline-primary">Read More</a>
+										<div class="price">
+											Year-of-publish: {{ file.year_of_pblish }}
+										</div>
+										{% if file.display_picture.url %}
+										<a class="download-btn" href="{{ file.display_picture.url }}" download>Download</a>
+										{% endif %}
+										
 									</div>
 								</div>
-							</li>
-							<li class="col-lg-4 col-md-6 col-sm-12">
-								<div class="product-box">
-									<div class="producct-img"><img src="vendors/images/product-img2.jpg" alt=""></div>
-									<div class="product-caption">
-										<h4><a href="#">Gufram Bounce White</a></h4>
-										<div class="price">
-											<del>$75.5</del><ins>$50</ins>
-										</div>
-										<a href="#" class="btn btn-outline-primary">Add To Cart</a>
-									</div>
+								{% empty %}
+								<div class="no-files-row">
+									No files uploaded yet.
 								</div>
 							</li>
-							<li class="col-lg-4 col-md-6 col-sm-12">
-								<div class="product-box">
-									<div class="producct-img"><img src="vendors/images/product-img3.jpg" alt=""></div>
-									<div class="product-caption">
-										<h4><a href="#">Contrast Lace-Up Sneakers</a></h4>
-										<div class="price">
-											<ins>$80</ins>
-										</div>
-										<a href="#" class="btn btn-outline-primary">Add To Cart</a>
-									</div>
-								</div>
-							</li>
-							<li class="col-lg-4 col-md-6 col-sm-12">
-								<div class="product-box">
-									<div class="producct-img"><img src="vendors/images/product-img4.jpg" alt=""></div>
-									<div class="product-caption">
-										<h4><a href="#">Apple Watch Series 3</a></h4>
-										<div class="price">
-											<ins>$380</ins>
-										</div>
-										<a href="#" class="btn btn-outline-primary">Read More</a>
-									</div>
-								</div>
-							</li>
+							
+							{% endfor %}
 
-							<li class="col-lg-4 col-md-6 col-sm-12">
-								<div class="product-box">
-									<div class="producct-img"><img src="vendors/images/product-img2.jpg" alt=""></div>
-									<div class="product-caption">
-										<h4><a href="#">Gufram Bounce White</a></h4>
-										<div class="price">
-											<del>$75.5</del><ins>$50</ins>
-										</div>
-										<a href="#" class="btn btn-outline-primary">Add To Cart</a>
-									</div>
-								</div>
-							</li>
-							<li class="col-lg-4 col-md-6 col-sm-12">
-								<div class="product-box">
-									<div class="producct-img"><img src="vendors/images/product-img4.jpg" alt=""></div>
-									<div class="product-caption">
-										<h4><a href="#">Apple Watch Series 3</a></h4>
-										<div class="price">
-											<ins>$380</ins>
-										</div>
-										<a href="#" class="btn btn-outline-primary">Read More</a>
-									</div>
-								</div>
-							</li>
-							<li class="col-lg-4 col-md-6 col-sm-12">
-								<div class="product-box">
-									<div class="producct-img"><img src="vendors/images/product-img1.jpg" alt=""></div>
-									<div class="product-caption">
-										<h4><a href="#">Gufram Bounce Black</a></h4>
-										<div class="price">
-											<del>$55.5</del><ins>$49.5</ins>
-										</div>
-										<a href="#" class="btn btn-outline-primary">Read More</a>
-									</div>
-								</div>
-							</li>
-							<li class="col-lg-4 col-md-6 col-sm-12">
-								<div class="product-box">
-									<div class="producct-img"><img src="vendors/images/product-img3.jpg" alt=""></div>
-									<div class="product-caption">
-										<h4><a href="#">Contrast Lace-Up Sneakers</a></h4>
-										<div class="price">
-											<ins>$80</ins>
-										</div>
-										<a href="#" class="btn btn-outline-primary">Add To Cart</a>
-									</div>
-								</div>
-							</li>
 
-							<li class="col-lg-4 col-md-6 col-sm-12">
-								<div class="product-box">
-									<div class="producct-img"><img src="vendors/images/product-img1.jpg" alt=""></div>
-									<div class="product-caption">
-										<h4><a href="#">Gufram Bounce Black</a></h4>
-										<div class="price">
-											<del>$55.5</del><ins>$49.5</ins>
-										</div>
-										<a href="#" class="btn btn-outline-primary">Read More</a>
-									</div>
-								</div>
-							</li>
-							<li class="col-lg-4 col-md-6 col-sm-12">
-								<div class="product-box">
-									<div class="producct-img"><img src="vendors/images/product-img2.jpg" alt=""></div>
-									<div class="product-caption">
-										<h4><a href="#">Gufram Bounce White</a></h4>
-										<div class="price">
-											<del>$75.5</del><ins>$50</ins>
-										</div>
-										<a href="#" class="btn btn-outline-primary">Add To Cart</a>
-									</div>
-								</div>
-							</li>
-							<li class="col-lg-4 col-md-6 col-sm-12">
-								<div class="product-box">
-									<div class="producct-img"><img src="vendors/images/product-img3.jpg" alt=""></div>
-									<div class="product-caption">
-										<h4><a href="#">Contrast Lace-Up Sneakers</a></h4>
-										<div class="price">
-											<ins>$80</ins>
-										</div>
-										<a href="#" class="btn btn-outline-primary">Add To Cart</a>
-									</div>
-								</div>
-							</li>
-							<li class="col-lg-4 col-md-6 col-sm-12">
-								<div class="product-box">
-									<div class="producct-img"><img src="vendors/images/product-img4.jpg" alt=""></div>
-									<div class="product-caption">
-										<h4><a href="#">Apple Watch Series 3</a></h4>
-										<div class="price">
-											<ins>$380</ins>
-										</div>
-										<a href="#" class="btn btn-outline-primary">Read More</a>
-									</div>
-								</div>
-							</li>
 						</ul>
 					</div>
-					<div class="blog-pagination mb-30">
+				</div>
+			</div>
+		</div>
+		{% endblock %}
+						
+							{% comment %} <li class="col-lg-4 col-md-6 col-sm-12">
+								<div class="product-box">
+									<div class="producct-img"><img src="{%static 'images/product-img2.jpg" alt=""></div>
+									<div class="product-caption">
+										<h4><a href="#">Gufram Bounce White</a></h4>
+										<div class="price">
+											<del>$75.5</del><ins>$50</ins>
+										</div>
+										<a href="#" class="btn btn-outline-primary">Add To Cart</a>
+									</div>
+								</div>
+							</li>
+							<li class="col-lg-4 col-md-6 col-sm-12">
+								<div class="product-box">
+									<div class="producct-img"><img src="{%static 'images/product-img3.jpg" alt=""></div>
+									<div class="product-caption">
+										<h4><a href="#">Contrast Lace-Up Sneakers</a></h4>
+										<div class="price">
+											<ins>$80</ins>
+										</div>
+										<a href="#" class="btn btn-outline-primary">Add To Cart</a>
+									</div>
+								</div>
+							</li>
+							<li class="col-lg-4 col-md-6 col-sm-12">
+								<div class="product-box">
+									<div class="producct-img"><img src="{%static 'images/product-img4.jpg" alt=""></div>
+									<div class="product-caption">
+										<h4><a href="#">Apple Watch Series 3</a></h4>
+										<div class="price">
+											<ins>$380</ins>
+										</div>
+										<a href="#" class="btn btn-outline-primary">Read More</a>
+									</div>
+								</div>
+							</li>
+
+							<li class="col-lg-4 col-md-6 col-sm-12">
+								<div class="product-box">
+									<div class="producct-img"><img src="{%static 'images/product-img2.jpg" alt=""></div>
+									<div class="product-caption">
+										<h4><a href="#">Gufram Bounce White</a></h4>
+										<div class="price">
+											<del>$75.5</del><ins>$50</ins>
+										</div>
+										<a href="#" class="btn btn-outline-primary">Add To Cart</a>
+									</div>
+								</div>
+							</li>
+							<li class="col-lg-4 col-md-6 col-sm-12">
+								<div class="product-box">
+									<div class="producct-img"><img src="{%static 'images/product-img4.jpg" alt=""></div>
+									<div class="product-caption">
+										<h4><a href="#">Apple Watch Series 3</a></h4>
+										<div class="price">
+											<ins>$380</ins>
+										</div>
+										<a href="#" class="btn btn-outline-primary">Read More</a>
+									</div>
+								</div>
+							</li>
+							<li class="col-lg-4 col-md-6 col-sm-12">
+								<div class="product-box">
+									<div class="producct-img"><img src="{%static 'images/product-img1.jpg" alt=""></div>
+									<div class="product-caption">
+										<h4><a href="#">Gufram Bounce Black</a></h4>
+										<div class="price">
+											<del>$55.5</del><ins>$49.5</ins>
+										</div>
+										<a href="#" class="btn btn-outline-primary">Read More</a>
+									</div>
+								</div>
+							</li>
+							<li class="col-lg-4 col-md-6 col-sm-12">
+								<div class="product-box">
+									<div class="producct-img"><img src="{%static 'images/product-img3.jpg" alt=""></div>
+									<div class="product-caption">
+										<h4><a href="#">Contrast Lace-Up Sneakers</a></h4>
+										<div class="price">
+											<ins>$80</ins>
+										</div>
+										<a href="#" class="btn btn-outline-primary">Add To Cart</a>
+									</div>
+								</div>
+							</li>
+
+							<li class="col-lg-4 col-md-6 col-sm-12">
+								<div class="product-box">
+									<div class="producct-img"><img src="{%static 'images/product-img1.jpg" alt=""></div>
+									<div class="product-caption">
+										<h4><a href="#">Gufram Bounce Black</a></h4>
+										<div class="price">
+											<del>$55.5</del><ins>$49.5</ins>
+										</div>
+										<a href="#" class="btn btn-outline-primary">Read More</a>
+									</div>
+								</div>
+							</li>
+							<li class="col-lg-4 col-md-6 col-sm-12">
+								<div class="product-box">
+									<div class="producct-img"><img src="{%static 'images/product-img2.jpg" alt=""></div>
+									<div class="product-caption">
+										<h4><a href="#">Gufram Bounce White</a></h4>
+										<div class="price">
+											<del>$75.5</del><ins>$50</ins>
+										</div>
+										<a href="#" class="btn btn-outline-primary">Add To Cart</a>
+									</div>
+								</div>
+							</li>
+							<li class="col-lg-4 col-md-6 col-sm-12">
+								<div class="product-box">
+									<div class="producct-img"><img src="{%static 'images/product-img3.jpg" alt=""></div>
+									<div class="product-caption">
+										<h4><a href="#">Contrast Lace-Up Sneakers</a></h4>
+										<div class="price">
+											<ins>$80</ins>
+										</div>
+										<a href="#" class="btn btn-outline-primary">Add To Cart</a>
+									</div>
+								</div>
+							</li>
+							<li class="col-lg-4 col-md-6 col-sm-12">
+								<div class="product-box">
+									<div class="producct-img"><img src="{%static 'images/product-img4.jpg" alt=""></div>
+									<div class="product-caption">
+										<h4><a href="#">Apple Watch Series 3</a></h4>
+										<div class="price">
+											<ins>$380</ins>
+										</div>
+										<a href="#" class="btn btn-outline-primary">Read More</a>
+									</div>
+								</div>
+							</li> {% endcomment %}
+						</ul>
+					</div>
+					{% comment %} <div class="blog-pagination mb-30">
 						<div class="btn-toolbar justify-content-center mb-15">
 							<div class="btn-group">
 								<a href="#" class="btn btn-outline-primary prev"><i class="fa fa-angle-double-left"></i></a>
@@ -628,18 +669,18 @@
 								<a href="#" class="btn btn-outline-primary next"><i class="fa fa-angle-double-right"></i></a>
 							</div>
 						</div>
-					</div>
+					</div> {% endcomment %}
 				</div>
 			</div>
-			<div class="footer-wrap pd-20 mb-20 card-box">
-				DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
-			</div>
+		
 		</div>
+		{% comment %} {%endblock%} {% endcomment %}
 	</div>
+	
 	<!-- js -->
-	<script src="vendors/scripts/core.js"></script>
-	<script src="vendors/scripts/script.min.js"></script>
-	<script src="vendors/scripts/process.js"></script>
-	<script src="vendors/scripts/layout-settings.js"></script>
+	<script src="{%static 'scripts/core.js"></script>
+	<script src="{%static 'scripts/script.min.js"></script>
+	<script src="{%static 'scripts/process.js"></script>
+	<script src="{%static 'scripts/layout-settings.js"></script>
 </body>
 </html>

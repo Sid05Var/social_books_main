@@ -120,7 +120,7 @@ def create_profile(request):
 
 def uploaded_file(request):
     file=uploaded_files.objects.all()
-    return render(request, 'display_uploaded_file.html',{'files':file})
+    return render(request, 'product.html',{'files':file})
 
 
 # class UserView(UserViewSet):
@@ -134,7 +134,7 @@ def uploaded_file_specific_user(request):
         file=uploaded_files.objects.all()
         if username is not None:
             file=file.filter(Name = username)
-    return render(request, 'display_uploaded_file.html',{'files':file})
+    return render(request, 'product.html',{'files':file})
 
     
 class TokenGenerationView(APIView):
@@ -180,10 +180,15 @@ def get_uploaded_file(request):
         file=file.filter(Name=username)
         print(file)
         for i in file:
-            
-            dict1[i.Title]={'file_url': i.display_picture.url,'file_Title':i.Title,'file_Cost':i.cost,'file_year_of_publish':i.year_of_pblish,'file_visibility':i.visibility}
+            b=i.display_picture.url
+            b=b.split("/")
+            print(b)
+            c=""
+            c=b[2]
+            dict1[i.Title]={'file_url': c,'file_Title':i.Title,'file_Cost':i.cost,'file_year_of_publish':i.year_of_pblish,'file_visibility':i.visibility}
             print(dict1)
-            a={'file_url': i.display_picture.url,'file_Title':i.Name,'file_Cost':i.cost,'file_year_of_publish':i.year_of_pblish,'file_visibility':i.visibility}
+            
+            a={'file_url': i.display_picture,'file_Title':i.Name,'file_Cost':i.cost,'file_year_of_publish':i.year_of_pblish,'file_visibility':i.visibility}
         # Perform any additional logic here if needed
         # dict1=tuple(dict1)
         print(dict1)
