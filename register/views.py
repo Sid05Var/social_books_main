@@ -1,3 +1,4 @@
+import string
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from .forms import CustomUserCreationForm
@@ -12,15 +13,16 @@ from rest_framework.views import APIView
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from social_books import settings
+from django.contrib.auth.hashers import make_password
 # from .models import ver_otp
 # from .forms import V_otpform
 from django.core.mail import send_mail
 import math, random
-# from djoser.views import UserViewSet
+
+# from djoser.views import UserViewSet 
 
 
-def login(request):
-    
+def login(request):   
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
@@ -58,6 +60,34 @@ def verify_otp(request):
             return HttpResponse('otp is invalid')
     return render(request, 'verify.html')
             
+def forget_password_send(request):
+    if request.method == "POST":
+        email = request.POST.get('email')
+        print(email)
+        global global_email, global_key
+        global_email = email
+        reset_key = generate_activation_key()
+        global_key = reset_key
+        link = f"http://localhost:8000/reset_password/{reset_key}"
+        from_email = settings.EMAIL_HOST_USER
+        send_mail("Forget link", link, from_email, [email])
+        print("Forget link", link, from_email, [email])
+        return redirect("login")
+    return render(request,"forgot-password.html")
+
+def confirm_password(request,reset_key):
+    global global_email, global_key
+    print(global_email,global_key)
+    if request.method == 'POST':
+        p1=request.POST.get('passwordone')
+        p2=request.POST.get('passwordtwo')
+        if str(p1) == str(p2):
+            user = CustomUser.objects.get(email=global_email)
+            print(user)
+            user.password=make_password(p1)
+            user.save()
+            return redirect('login')
+    return render(request,"otp_reset.html")
     
 
 @login_required(login_url='login')
@@ -217,3 +247,10 @@ def generateOTP() :
         OTP += digits[math.floor(random.random() * 10)]
  
     return OTP
+
+def generate_activation_key():
+    chars = string.ascii_letters + string.digits
+    activation_key = ''.join(random.choice(chars) for _ in range(16))
+    return activation_key
+
+

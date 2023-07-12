@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 from social_books import settings
+from django.contrib.auth import views as auth_views
 # from .views import UserView
 # from django.config import settings
 
@@ -19,6 +20,9 @@ urlpatterns = [
     path('display_file',views.uploaded_file,name="display_file"),
     path('display_file_specific',views.uploaded_file_specific_user,name="display_file_specific"),
     # path('api/user/', UserView.as_view({'get': 'list'}), name='user_list'),
+    path('forget_password/', views.forget_password_send,name="forget_password_send"),
+    path('reset_password/<str:reset_key>', views.confirm_password,name="reset_password"),
+  
 ]
 
 
